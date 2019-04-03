@@ -1,0 +1,6 @@
+{
+    "presets": [
+        ["es2015", {"loose": true}], // loose: true  比较松散的 不是非常严格的
+        "react"
+    ]
+}
