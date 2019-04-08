@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
+const favicon = require('serve-favicon')
 const express = require('express')
 const ReactSSR = require('react-dom/server')
 
@@ -8,6 +9,8 @@ const ReactSSR = require('react-dom/server')
 const isDev = process.env.NODE_ENV === 'development';
 
 const app = express()
+
+app.use(favicon(path.join(__dirname, '../favicon.ico'))) // 设置favicon的请求地址
 
 if (!isDev) {
     const serverEntry = require('../dist/server_entry').default // 服务端代码在 serverEntry 里    .default见简书3-7
