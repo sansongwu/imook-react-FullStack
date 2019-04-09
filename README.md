@@ -15,3 +15,7 @@
 git hook
 "lint": "eslint --ext .js --ext .jsx client/"
 "precommit": "npm run lint"
+
+#分支说明
+master: 开发实例项目的主分支
+ssr_release: 发布react ssr webpack配置 的分支，方便将来开发使用
