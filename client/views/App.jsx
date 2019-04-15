@@ -18,11 +18,11 @@ export default class App extends React.Component { // react组件 就是一个cl
 
   render() { // 组件必须有render方法  代表要渲染组件的时候 生成怎样的html代码
     return [
-      <div>
+      <div key="nav">
         <Link to="/">首页</Link>
         <Link to="/detail">详情页</Link>
       </div>,
-      <Routes />,
+      <Routes key="routes" />,
     ]
   }
 }
