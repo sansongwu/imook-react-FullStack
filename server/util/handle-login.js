@@ -1,9 +1,11 @@
 const router = require('express').Router()
 const axios = require('axios')
 
-const baseUrl = 'http://cnodejs.org/api/v1'
+const baseUrl = 'https://cnodejs.org/api/v1'
 
-router.post('./login', function (req, res, next) {
+router.post('/login', function (req, res, next) {
+  console.log(req.body)
+  console.log('login收到请求')
   axios.post(`${baseUrl}/accesstoken`, {
     accesstoken: req.body.accessToken
   }).then(resp => {
@@ -20,10 +22,11 @@ router.post('./login', function (req, res, next) {
       })
     }
   }).catch(err => {
+    console.log('login-err')
     if (err.response) { // 错误 但是返回内容了
       res.json({
         success: false,
-        data: err.response
+        data: err.response.data // 这里response本身非常的大 无法转换成字符串 所以只转换res.data
       })
     } else {
       next(err)

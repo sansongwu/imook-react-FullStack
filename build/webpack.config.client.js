@@ -32,6 +32,9 @@ if (isDev) {
         publicPath: '/public', // 访问dist目录下的内容路径都增加 ./public前缀
         historyApiFallback: {
             index: '/public/index.html' // 所有404的请求 都返回该html
+        },
+        proxy: {
+          '/api': 'http://localhost:3333'
         }
     }
 }
