@@ -11,8 +11,8 @@ const serverConfig = require('../../build/webpack.config.server')
 // 获取template
 const getTemplate = () => {
     return new Promise((resolve, reject) => {
-        // 服务是webpack-devServer在本地8888起的 从这里去获取html
-        axios.get('http://localhost:8888/public/index.html')
+        // 服务是webpack-devServer在本地8881起的 从这里去获取html
+        axios.get('http://localhost:8881/public/index.html')
         .then(res => {
             resolve(res.data)
         })
@@ -49,9 +49,9 @@ serverCompiler.watch({}, (err, stats) => {
 
 
 module.exports = function (app) {
-    // 将静态文件代理到 8888端口上
+    // 将静态文件代理到 8881端口上
     app.use('/public',  proxy({
-        target: 'http://localhost:8888'
+        target: 'http://localhost:8881'
     }))
     app.get('*', function (req, res) {
         getTemplate().then(template => {

@@ -28,6 +28,7 @@ app.use(favicon(path.join(__dirname, '../favicon.ico'))) // 设置favicon的请�
 /* 拦截请求 */
 app.use('/api/user', require('./util/handle-login'))
 app.use('/api', require('./util/proxy'))
+app.use('/mega', require('./util/megaProxy'))
 
 if (!isDev) {
     const serverEntry = require('../dist/server_entry').default // 服务端代码在 serverEntry 里    .default见简书3-7

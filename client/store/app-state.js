@@ -26,7 +26,7 @@ class AppState {
 const appState = new AppState()
 
 autorun(() => { // 数据变化就执行？
-  console.log(appState.msg)
+  // console.log(appState.msg)
 })
 
 setInterval(() => {

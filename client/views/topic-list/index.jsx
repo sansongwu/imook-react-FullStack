@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import {
   observer,
   inject,
@@ -6,6 +7,11 @@ import {
 import PropTypes from 'prop-types'
 
 import AppState from '../../store/app-state'
+
+const test = () => {
+  console.log('click')
+  axios('mega/2/getUserInfo?mega_id=M5129308&platform=universal')
+}
 
 @inject('appState') // 注入store  该组件用了哪个store 就注入哪个
 @observer // 数据更新 组件也更新
@@ -29,6 +35,7 @@ class TopicList extends React.Component {
       <div>
         <input type="text" onChange={this.changeName} />
         <span>{this.props.appState.msg}</span>
+        <button type="button" onClick={test}>test</button>
       </div>
     )
   }

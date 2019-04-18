@@ -23,7 +23,7 @@ const config = webpackMerge(baseConfig, {
 if (isDev) {
     config.devServer = {
         host: '0.0.0.0',
-        port: '8888',
+        port: '8881',
         contentBase: path.join(__dirname, '../dist'),
         hot: true,
         overlay: {
