@@ -24,7 +24,7 @@ export default class CNodeApiTest extends React.Component {
   }
 
   mark() {
-    axios.post('/api/accesstoken?needAccessToken=true')
+    axios.post('/api/message/mark_all?needAccessToken=true')
     .then(res => {
       console.log(res)
     }).catch(err => {

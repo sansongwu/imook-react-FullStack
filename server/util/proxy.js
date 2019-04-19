@@ -1,12 +1,14 @@
 const axios = require('axios')
 const queryString = require('query-string')
 
-const baseUrl = 'http://cnodejs.org/api/v1'
+const baseUrl = 'https://cnodejs.org/api/v1'
 
 module.exports = function (req, res, next) {
   console.log('proxy收到请求')
   const path = req.path
   console.log(path)
+  console.log(req.method)
+
   const user = req.session.user || {}// 判断是否登录使用的
   const needAccessToken = req.query.needAccessToken // 判断接口是否需要token
   if (needAccessToken && !user.accessToken) {
@@ -21,6 +23,9 @@ module.exports = function (req, res, next) {
   })
   if (query.needAccessToken) delete query.needAccessToken // 删除掉自己增加的params
   console.log(`${baseUrl}${path}`)
+  console.log(queryString.stringify(Object.assign({}, req.body, {
+    accesstoken: (needAccessToken && req.method === 'POST') ? user.accessToken : ''
+  })))
   axios(`${baseUrl}${path}`, {
     method: req.method,
     params: query, // 由于不知道是get 还是 post 请求 所以params 和 data 都写
